@@ -32,7 +32,7 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="#home" className="text-xl font-bold text-primary flex items-center gap-2">
+        <a href="#home" className="text-xl font-bold text-primary flex items-center gap-2 animate-in">
           <span className="text-2xl">🧠</span> Parvesh Rawal
         </a>
         
@@ -40,46 +40,52 @@ const Header = () => {
         <Button 
           variant="ghost" 
           size="icon" 
-          className="md:hidden" 
+          className="md:hidden animate-in" 
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <Menu />
         </Button>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6">
-          {navItems.map((item) => (
+        <nav className="hidden md:flex space-x-6 animate-in">
+          {navItems.map((item, i) => (
             <a 
               key={item.label} 
               href={item.href}
               className="font-medium text-muted-foreground hover:text-primary transition-colors"
+              style={{ animationDelay: `${i * 50}ms` }}
             >
               {item.label}
             </a>
           ))}
-          <Button asChild>
-            <a href="#" className="flex items-center gap-2">
-              <Download className="h-4 w-4" /> Resume
+          <Button asChild className="group">
+            <a 
+              href="https://drive.google.com/uc?export=download&id=YOURFILEID" 
+              download="Parvesh_Rawal_Resume.pdf"
+              className="flex items-center gap-2"
+            >
+              <Download className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Resume
             </a>
           </Button>
         </nav>
         
         {/* Mobile Navigation */}
         {menuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-background shadow-md md:hidden animate-in">
+          <div className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-md md:hidden animate-in">
             <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-              {navItems.map((item) => (
+              {navItems.map((item, i) => (
                 <a 
                   key={item.label} 
                   href={item.href}
                   className="font-medium text-muted-foreground hover:text-primary transition-colors"
                   onClick={() => setMenuOpen(false)}
+                  style={{ animationDelay: `${i * 50}ms` }}
                 >
                   {item.label}
                 </a>
               ))}
-              <Button className="w-full flex items-center justify-center gap-2">
-                <Download className="h-4 w-4" /> Resume
+              <Button className="w-full flex items-center justify-center gap-2 group">
+                <Download className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Resume
               </Button>
             </nav>
           </div>

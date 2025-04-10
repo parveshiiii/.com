@@ -13,6 +13,7 @@ const Projects = () => {
       description: 'An advanced AI platform focusing on emotion recognition and sentiment analysis, with a responsive interface built with modern web technologies.',
       image: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800&h=500',
       link: 'https://xenarcai.onrender.com/',
+      github: 'https://github.com/XenArcAI/xenarcai-platform',
       technologies: ['Python', 'TensorFlow', 'React', 'AWS'],
     },
     {
@@ -20,7 +21,8 @@ const Projects = () => {
       title: 'Xenith_mini',
       description: 'Coming soon! A lightweight version of our emotional intelligence framework designed for edge devices and low-resource environments.',
       image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&h=500',
-      link: '#',
+      link: 'https://github.com/XenArcAI',
+      github: 'https://github.com/XenArcAI/xenith-mini',
       technologies: ['PyTorch', 'BERT', 'Edge Computing'],
     },
     {
@@ -28,7 +30,8 @@ const Projects = () => {
       title: 'Empathy Model',
       description: 'An open-source implementation of our research on computational empathy modeling for more human-centered AI interactions.',
       image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&h=500',
-      link: '#',
+      link: 'https://github.com/XenArcAI/empathy-model',
+      github: 'https://github.com/XenArcAI/empathy-model',
       technologies: ['Python', 'NLP', 'Machine Learning', 'Research'],
     },
   ];
@@ -36,14 +39,19 @@ const Projects = () => {
   return (
     <section id="projects" className="section-padding bg-muted/30">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-2">Featured Projects</h2>
-        <p className="text-muted-foreground mb-12 max-w-2xl">
-          A showcase of my recent work in AI and machine learning. Each project represents a step forward in emotional intelligence and human-centered computing.
+        <h2 className="text-3xl font-bold mb-2 animate-in">Featured Projects</h2>
+        <p className="text-muted-foreground mb-12 max-w-2xl animate-in" style={{animationDelay: "50ms"}}>
+          A showcase of my innovations in AI and machine learning. Each project represents a milestone in advancing 
+          emotional intelligence and human-centered computing.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <Card key={project.id} className="overflow-hidden hover-card">
+          {projects.map((project, i) => (
+            <Card 
+              key={project.id} 
+              className="overflow-hidden hover-card animate-in"
+              style={{animationDelay: `${i * 100 + 100}ms`}}
+            >
               <div className="h-48 overflow-hidden">
                 <img 
                   src={project.image} 
@@ -64,38 +72,39 @@ const Projects = () => {
               </CardContent>
               <CardFooter className="flex justify-between">
                 <a 
-                  href="https://github.com/XenArcAI" 
+                  href={project.github} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-sm font-medium text-primary hover:underline"
+                  className="flex items-center text-sm font-medium text-primary hover:underline group"
                 >
-                  <Github className="mr-1 h-4 w-4" /> Repository
+                  <Github className="mr-1 h-4 w-4 transition-transform group-hover:-translate-y-1" /> Repository
                 </a>
                 <a 
                   href={project.link} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-sm font-medium text-primary hover:underline"
+                  className="flex items-center text-sm font-medium text-primary hover:underline group"
                 >
-                  Live Demo <ExternalLink className="ml-1 h-4 w-4" />
+                  View Project <ExternalLink className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </CardFooter>
             </Card>
           ))}
         </div>
         
-        <div className="mt-12 text-center">
-          <h3 className="text-xl font-bold mb-4">Join XenArcAI</h3>
+        <div className="mt-12 text-center animate-in" style={{animationDelay: "400ms"}}>
+          <h3 className="text-xl font-bold mb-4">Innovating at XenArcAI</h3>
           <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-            We're looking for talented individuals passionate about AI and emotional intelligence to join our team.
+            I founded XenArcAI to revolutionize how machines understand human emotions. 
+            Join me on this journey to create more empathetic AI.
           </p>
-          <Button size="lg" asChild>
+          <Button size="lg" className="group" asChild>
             <a 
               href="https://github.com/XenArcAI" 
               target="_blank"
               rel="noopener noreferrer"
             >
-              Join Us
+              Explore XenArcAI <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
         </div>

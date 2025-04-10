@@ -5,11 +5,13 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Skeleton } from '@/components/ui/skeleton';
 import { GitHubRepo } from '@/lib/types';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useToast } from '@/hooks/use-toast';
 
 const GitHubProjects = () => {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { toast } = useToast();
   
   // GitHub username
   const username = 'parveshiiii';
@@ -21,7 +23,7 @@ const GitHubProjects = () => {
         setLoading(true);
         
         // Fetch user repos
-        const userResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=3`);
+        const userResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
         
         if (!userResponse.ok) {
           throw new Error('Failed to fetch GitHub repositories');
@@ -30,7 +32,7 @@ const GitHubProjects = () => {
         const userData = await userResponse.json();
         
         // Fetch organization repos
-        const orgResponse = await fetch(`https://api.github.com/orgs/${orgUsername}/repos?sort=updated&per_page=3`);
+        const orgResponse = await fetch(`https://api.github.com/orgs/${orgUsername}/repos?sort=updated&per_page=100`);
         let orgData = [];
         
         if (orgResponse.ok) {
@@ -40,16 +42,29 @@ const GitHubProjects = () => {
         // Combine both sets of repos and take the first 6
         const combinedRepos = [...userData, ...orgData].slice(0, 6);
         setRepos(combinedRepos);
+        
+        toast({
+          title: "GitHub repositories loaded",
+          description: `Loaded ${combinedRepos.length} repositories`,
+          duration: 3000,
+        });
+        
         setLoading(false);
       } catch (error) {
         console.error('Error fetching repos:', error);
         setError('Failed to load GitHub repositories. Please check the username and try again.');
         setLoading(false);
+        
+        toast({
+          title: "Error loading repositories",
+          description: "Failed to load GitHub repositories",
+          variant: "destructive",
+        });
       }
     };
 
     fetchRepos();
-  }, [username, orgUsername]);
+  }, [username, orgUsername, toast]);
 
   // Function to determine language color
   const getLanguageColor = (language: string | null) => {
@@ -69,27 +84,29 @@ const GitHubProjects = () => {
     <section id="github" className="section-padding bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-12">
-          <div>
+          <div className="animate-in">
             <h2 className="text-3xl font-bold mb-2">GitHub Projects</h2>
             <p className="text-muted-foreground max-w-2xl">
-              My open source work and personal projects on GitHub.
+              My open source work and contributions from personal and organization repositories.
             </p>
           </div>
           
-          <div className="flex items-center space-x-4">
-            <Avatar className="h-14 w-14 border-2 border-primary">
-              <AvatarImage src="https://avatars.githubusercontent.com/u/XenArcAI" alt="XenArcAI" />
-              <AvatarFallback>XA</AvatarFallback>
-            </Avatar>
+          <div className="flex items-center space-x-4 animate-in" style={{animationDelay: "150ms"}}>
+            <a href="https://github.com/XenArcAI" target="_blank" rel="noopener noreferrer" className="group">
+              <Avatar className="h-14 w-14 border-2 border-primary transition-all group-hover:scale-105">
+                <AvatarImage src="https://avatars.githubusercontent.com/u/XenArcAI" alt="XenArcAI" />
+                <AvatarFallback>XA</AvatarFallback>
+              </Avatar>
+            </a>
             <div>
               <h3 className="font-bold">XenArcAI</h3>
-              <p className="text-sm text-muted-foreground">Founder</p>
+              <p className="text-sm text-muted-foreground">Founder & CEO</p>
             </div>
           </div>
         </div>
         
         {error && (
-          <div className="flex items-center p-4 mb-8 bg-destructive/10 border border-destructive/30 rounded-md">
+          <div className="flex items-center p-4 mb-8 bg-destructive/10 border border-destructive/30 rounded-md animate-in">
             <AlertCircle className="h-5 w-5 text-destructive mr-2" />
             <p className="text-destructive">{error}</p>
           </div>
@@ -99,7 +116,7 @@ const GitHubProjects = () => {
           {loading ? (
             // Skeleton loaders
             Array(6).fill(0).map((_, index) => (
-              <Card key={index}>
+              <Card key={index} className="animate-pulse">
                 <CardHeader>
                   <Skeleton className="h-5 w-3/4" />
                   <Skeleton className="h-4 w-full mt-2" />
@@ -115,8 +132,12 @@ const GitHubProjects = () => {
               </Card>
             ))
           ) : (
-            repos.map((repo) => (
-              <Card key={repo.id} className="hover-card">
+            repos.map((repo, i) => (
+              <Card 
+                key={repo.id} 
+                className="hover-card animate-in"
+                style={{ animationDelay: `${i * 100}ms` }}
+              >
                 <CardHeader>
                   <CardTitle className="text-lg">{repo.name}</CardTitle>
                   <CardDescription>
@@ -146,9 +167,9 @@ const GitHubProjects = () => {
                     href={repo.html_url} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center text-sm text-primary hover:underline"
+                    className="flex items-center text-sm text-primary hover:underline group"
                   >
-                    View <ExternalLink className="h-3 w-3 ml-1" />
+                    View <ExternalLink className="h-3 w-3 ml-1 transition-transform group-hover:translate-x-1" />
                   </a>
                 </CardFooter>
               </Card>
@@ -156,22 +177,22 @@ const GitHubProjects = () => {
           )}
         </div>
         
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center animate-in" style={{animationDelay: "300ms"}}>
           <a 
             href={`https://github.com/${username}`}
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center text-primary font-medium hover:underline mr-6"
+            className="inline-flex items-center text-primary font-medium hover:underline mr-6 group"
           >
-            My GitHub Profile <ExternalLink className="ml-1 h-4 w-4" />
+            My GitHub Profile <ExternalLink className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a 
             href={`https://github.com/${orgUsername}`}
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center text-primary font-medium hover:underline"
+            className="inline-flex items-center text-primary font-medium hover:underline group"
           >
-            XenArcAI Organization <ExternalLink className="ml-1 h-4 w-4" />
+            XenArcAI Organization <ExternalLink className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
         </div>
       </div>
