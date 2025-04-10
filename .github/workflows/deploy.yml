@@ -35,6 +35,12 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Fix base path for GitHub Pages
+        run: |
+          if [ -d "./dist" ]; then
+            echo "Adding .nojekyll file to disable Jekyll processing"
+            touch ./dist/.nojekyll
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

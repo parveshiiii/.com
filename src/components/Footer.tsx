@@ -1,5 +1,5 @@
 
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -25,6 +25,11 @@ const Footer = () => {
       href: 'mailto:pr086832@gmail.com', 
       label: 'Email' 
     },
+    {
+      icon: <Phone className="h-5 w-5" />,
+      href: 'tel:+918950466775',
+      label: 'Phone'
+    }
   ];
 
   return (
@@ -54,7 +59,7 @@ const Footer = () => {
               &copy; {currentYear} Parvesh Rawal. All rights reserved.
             </p>
             <p className="mt-2 text-sm">
-              Contact: <a href="mailto:pr086832@gmail.com" className="text-primary hover:underline">pr086832@gmail.com</a>
+              Contact: <a href="mailto:pr086832@gmail.com" className="text-primary hover:underline">pr086832@gmail.com</a> | <a href="tel:+918950466775" className="text-primary hover:underline">+91 8950466775</a>
             </p>
           </div>
         </div>
