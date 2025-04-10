@@ -9,13 +9,13 @@ const Hero = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl animate-in">
           <div className="flex items-center gap-4 mb-6">
-            <Avatar className="h-24 w-24 border-2 border-primary animate-in">
+            <Avatar className="h-24 w-24 border-2 border-primary animate-in animate-float animate-glow">
               <AvatarImage src="https://avatars.githubusercontent.com/u/parveshiiii" alt="Parvesh Rawal" />
               <AvatarFallback>PR</AvatarFallback>
             </Avatar>
             <div className="animate-in animate-delayed">
               <p className="text-primary font-medium">Hello, I'm</p>
-              <h1 className="text-4xl md:text-6xl font-bold">
+              <h1 className="text-4xl md:text-6xl font-bold gradient-text">
                 Parvesh Rawal
               </h1>
               <p className="text-muted-foreground">Founder & CEO of XenArcAI | AI & ML Visionary</p>
@@ -29,14 +29,14 @@ const Hero = () => {
             human-centered AI at XenArcAI.
           </p>
           <div className="flex flex-wrap gap-4 animate-in" style={{animationDelay: "250ms"}}>
-            <Button size="lg" className="group" asChild>
+            <Button size="lg" className="group animate-pulse-slow" asChild>
               <a href="#projects">
                 Explore My Work 
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
             <Button size="lg" variant="outline" className="hover:border-primary" asChild>
-              <a href="#contact">Connect With Me</a>
+              <a href="#join-us">Join XenArcAI</a>
             </Button>
           </div>
         </div>

@@ -11,7 +11,7 @@ const Projects = () => {
       id: '1',
       title: 'XenArcAI Platform',
       description: 'An advanced AI platform focusing on emotion recognition and sentiment analysis, with a responsive interface built with modern web technologies.',
-      image: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800&h=500',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&h=500',
       link: 'https://xenarcai.onrender.com/',
       github: 'https://github.com/XenArcAI/xenarcai-platform',
       technologies: ['Python', 'TensorFlow', 'React', 'AWS'],
@@ -20,16 +20,16 @@ const Projects = () => {
       id: '2',
       title: 'Xenith_mini',
       description: 'Coming soon! A lightweight version of our emotional intelligence framework designed for edge devices and low-resource environments.',
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&h=500',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&h=500',
       link: 'https://github.com/XenArcAI',
       github: 'https://github.com/XenArcAI/xenith-mini',
-      technologies: ['PyTorch', 'BERT', 'Edge Computing'],
+      technologies: ['PyTorch', 'Edge Computing'],
     },
     {
       id: '3',
       title: 'Empathy Model',
       description: 'An open-source implementation of our research on computational empathy modeling for more human-centered AI interactions.',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&h=500',
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&h=500',
       link: 'https://github.com/XenArcAI/empathy-model',
       github: 'https://github.com/XenArcAI/empathy-model',
       technologies: ['Python', 'NLP', 'Machine Learning', 'Research'],
@@ -100,11 +100,10 @@ const Projects = () => {
           </p>
           <Button size="lg" className="group" asChild>
             <a 
-              href="https://github.com/XenArcAI" 
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#join-us" 
+              className="scroll-smooth"
             >
-              Explore XenArcAI <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              Join Us <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
         </div>

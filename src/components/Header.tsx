@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, Download } from 'lucide-react';
+import { Menu, Download, Users } from 'lucide-react';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -22,6 +22,7 @@ const Header = () => {
     { label: 'Projects', href: '#projects' },
     { label: 'About', href: '#about' },
     { label: 'GitHub', href: '#github' },
+    { label: 'Join Us', href: '#join-us' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -52,7 +53,9 @@ const Header = () => {
             <a 
               key={item.label} 
               href={item.href}
-              className="font-medium text-muted-foreground hover:text-primary transition-colors"
+              className={`font-medium hover:text-primary transition-colors ${
+                item.label === 'Join Us' ? 'text-primary' : 'text-muted-foreground'
+              }`}
               style={{ animationDelay: `${i * 50}ms` }}
             >
               {item.label}
@@ -60,11 +63,10 @@ const Header = () => {
           ))}
           <Button asChild className="group">
             <a 
-              href="https://drive.google.com/uc?export=download&id=YOURFILEID" 
-              download="Parvesh_Rawal_Resume.pdf"
+              href="mailto:pr086832@gmail.com" 
               className="flex items-center gap-2"
             >
-              <Download className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Resume
+              <Users className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Contact Me
             </a>
           </Button>
         </nav>
@@ -77,7 +79,9 @@ const Header = () => {
                 <a 
                   key={item.label} 
                   href={item.href}
-                  className="font-medium text-muted-foreground hover:text-primary transition-colors"
+                  className={`font-medium transition-colors ${
+                    item.label === 'Join Us' ? 'text-primary' : 'text-muted-foreground'
+                  } hover:text-primary`}
                   onClick={() => setMenuOpen(false)}
                   style={{ animationDelay: `${i * 50}ms` }}
                 >
@@ -85,7 +89,7 @@ const Header = () => {
                 </a>
               ))}
               <Button className="w-full flex items-center justify-center gap-2 group">
-                <Download className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Resume
+                <Users className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Contact Me
               </Button>
             </nav>
           </div>

@@ -54,7 +54,7 @@ const Footer = () => {
               &copy; {currentYear} Parvesh Rawal. All rights reserved.
             </p>
             <p className="mt-2 text-sm">
-              Contact: <a href="mailto:pr086832@gmail.com" className="text-primary hover:underline">pr086832@gmail.com</a> | <a href="mailto:INSHOP07@outlook.com" className="text-primary hover:underline">INSHOP07@outlook.com</a>
+              Contact: <a href="mailto:pr086832@gmail.com" className="text-primary hover:underline">pr086832@gmail.com</a>
             </p>
           </div>
         </div>
