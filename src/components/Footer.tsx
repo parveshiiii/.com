@@ -7,22 +7,22 @@ const Footer = () => {
   const socialLinks = [
     { 
       icon: <Github className="h-5 w-5" />, 
-      href: 'https://github.com/your-username', 
+      href: 'https://github.com/parveshiiii', 
       label: 'GitHub' 
     },
     { 
       icon: <Linkedin className="h-5 w-5" />, 
-      href: 'https://linkedin.com/in/your-profile', 
+      href: 'https://www.linkedin.com/in/parvesh-rawal-249909353/', 
       label: 'LinkedIn' 
     },
     { 
       icon: <Twitter className="h-5 w-5" />, 
-      href: 'https://twitter.com/your-handle', 
+      href: 'https://twitter.com/parvesh_rawal01', 
       label: 'Twitter' 
     },
     { 
       icon: <Mail className="h-5 w-5" />, 
-      href: 'mailto:your.email@example.com', 
+      href: 'mailto:pr086832@gmail.com', 
       label: 'Email' 
     },
   ];
@@ -48,10 +48,13 @@ const Footer = () => {
           
           <div className="text-center text-muted-foreground">
             <p className="mb-2">
-              Designed & Built with ❤️ 
+              Founder of <a href="https://xenarcai.onrender.com/" className="text-primary hover:underline">XenArcAI</a> | AI & ML Enthusiast 
             </p>
             <p>
-              &copy; {currentYear} Your Name. All rights reserved.
+              &copy; {currentYear} Parvesh Rawal. All rights reserved.
+            </p>
+            <p className="mt-2 text-sm">
+              Contact: <a href="mailto:pr086832@gmail.com" className="text-primary hover:underline">pr086832@gmail.com</a> | <a href="mailto:INSHOP07@outlook.com" className="text-primary hover:underline">INSHOP07@outlook.com</a>
             </p>
           </div>
         </div>

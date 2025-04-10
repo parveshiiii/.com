@@ -4,27 +4,42 @@ import { ExternalLink, Star, GitFork, AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { GitHubRepo } from '@/lib/types';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const GitHubProjects = () => {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   
-  // GitHub username - you'll need to replace this with the actual username when you get it
-  const username = 'github-username';
+  // GitHub username
+  const username = 'parveshiiii';
+  const orgUsername = 'XenArcAI';
 
   useEffect(() => {
     const fetchRepos = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
         
-        if (!response.ok) {
+        // Fetch user repos
+        const userResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=3`);
+        
+        if (!userResponse.ok) {
           throw new Error('Failed to fetch GitHub repositories');
         }
         
-        const data = await response.json();
-        setRepos(data);
+        const userData = await userResponse.json();
+        
+        // Fetch organization repos
+        const orgResponse = await fetch(`https://api.github.com/orgs/${orgUsername}/repos?sort=updated&per_page=3`);
+        let orgData = [];
+        
+        if (orgResponse.ok) {
+          orgData = await orgResponse.json();
+        }
+        
+        // Combine both sets of repos and take the first 6
+        const combinedRepos = [...userData, ...orgData].slice(0, 6);
+        setRepos(combinedRepos);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching repos:', error);
@@ -34,7 +49,7 @@ const GitHubProjects = () => {
     };
 
     fetchRepos();
-  }, [username]);
+  }, [username, orgUsername]);
 
   // Function to determine language color
   const getLanguageColor = (language: string | null) => {
@@ -53,10 +68,25 @@ const GitHubProjects = () => {
   return (
     <section id="github" className="section-padding bg-muted/30">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-2">GitHub Projects</h2>
-        <p className="text-muted-foreground mb-12 max-w-2xl">
-          Some of my open source work and personal projects on GitHub.
-        </p>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-12">
+          <div>
+            <h2 className="text-3xl font-bold mb-2">GitHub Projects</h2>
+            <p className="text-muted-foreground max-w-2xl">
+              My open source work and personal projects on GitHub.
+            </p>
+          </div>
+          
+          <div className="flex items-center space-x-4">
+            <Avatar className="h-14 w-14 border-2 border-primary">
+              <AvatarImage src="https://avatars.githubusercontent.com/u/XenArcAI" alt="XenArcAI" />
+              <AvatarFallback>XA</AvatarFallback>
+            </Avatar>
+            <div>
+              <h3 className="font-bold">XenArcAI</h3>
+              <p className="text-sm text-muted-foreground">Founder</p>
+            </div>
+          </div>
+        </div>
         
         {error && (
           <div className="flex items-center p-4 mb-8 bg-destructive/10 border border-destructive/30 rounded-md">
@@ -131,9 +161,17 @@ const GitHubProjects = () => {
             href={`https://github.com/${username}`}
             target="_blank" 
             rel="noopener noreferrer"
+            className="inline-flex items-center text-primary font-medium hover:underline mr-6"
+          >
+            My GitHub Profile <ExternalLink className="ml-1 h-4 w-4" />
+          </a>
+          <a 
+            href={`https://github.com/${orgUsername}`}
+            target="_blank" 
+            rel="noopener noreferrer"
             className="inline-flex items-center text-primary font-medium hover:underline"
           >
-            View all repositories on GitHub <ExternalLink className="ml-1 h-4 w-4" />
+            XenArcAI Organization <ExternalLink className="ml-1 h-4 w-4" />
           </a>
         </div>
       </div>

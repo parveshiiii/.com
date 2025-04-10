@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu } from 'lucide-react';
+import { Menu, Download } from 'lucide-react';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -32,7 +32,9 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="#home" className="text-xl font-bold text-primary">Portfolio</a>
+        <a href="#home" className="text-xl font-bold text-primary flex items-center gap-2">
+          <span className="text-2xl">🧠</span> Parvesh Rawal
+        </a>
         
         {/* Mobile Menu Button */}
         <Button 
@@ -55,7 +57,11 @@ const Header = () => {
               {item.label}
             </a>
           ))}
-          <Button>Resume</Button>
+          <Button asChild>
+            <a href="#" className="flex items-center gap-2">
+              <Download className="h-4 w-4" /> Resume
+            </a>
+          </Button>
         </nav>
         
         {/* Mobile Navigation */}
@@ -72,7 +78,9 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <Button className="w-full">Resume</Button>
+              <Button className="w-full flex items-center justify-center gap-2">
+                <Download className="h-4 w-4" /> Resume
+              </Button>
             </nav>
           </div>
         )}
