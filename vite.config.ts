@@ -20,5 +20,13 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // GitHub Pages specific settings
   base: './', // This ensures assets are loaded correctly on GitHub Pages
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    minify: true,
+    emptyOutDir: true,
+  },
 }));
