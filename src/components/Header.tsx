@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, Download, Users, Sun } from 'lucide-react';
+import { Menu, Users, Sun } from 'lucide-react';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
