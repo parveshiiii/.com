@@ -1,5 +1,5 @@
 
-import { Github, Linkedin, Twitter, Mail, Phone, Globe, Zap } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, Phone, Zap } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -63,12 +63,18 @@ const Footer = () => {
             </p>
           </div>
           
-          {/* Grok-style branding */}
-          <div className="mt-6 flex items-center gap-2 text-primary">
-            <Globe className="h-5 w-5 text-primary" />
-            <span className="font-bold">XenArcAI</span>
-            <Zap className="h-5 w-5 text-primary animate-glow" />
+          {/* XenArcAI dynamic branding */}
+          <div className="mt-8 mb-2 relative">
+            <div className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-primary/80 to-purple-400 bg-clip-text text-transparent animate-pulse-slow">
+              XenArcAI
+            </div>
+            <div className="absolute -top-4 -right-4">
+              <Zap className="h-6 w-6 text-primary animate-glow" />
+            </div>
           </div>
+          
+          {/* Glowing underline effect */}
+          <div className="w-40 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-pulse-slow"></div>
         </div>
       </div>
     </footer>
