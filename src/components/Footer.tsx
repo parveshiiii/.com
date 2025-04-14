@@ -34,9 +34,15 @@ const Footer = () => {
 
   return (
     <footer className="bg-muted/30 py-12 relative">
-      {/* Lightning effect at top of footer */}
+      {/* Enhanced lightning effect at top of footer */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <Zap className="h-10 w-10 text-primary animate-glow" />
+        <Zap className="h-12 w-12 text-primary animate-pulse-slow" />
+      </div>
+      <div className="absolute top-0 left-1/3 transform -translate-y-1/2">
+        <Zap className="h-8 w-8 text-primary animate-glow" style={{animationDelay: "0.5s"}} />
+      </div>
+      <div className="absolute top-0 right-1/3 transform -translate-y-1/2">
+        <Zap className="h-8 w-8 text-primary animate-glow" style={{animationDelay: "0.8s"}} />
       </div>
       
       <div className="container mx-auto px-4">
@@ -68,7 +74,7 @@ const Footer = () => {
             </p>
           </div>
           
-          {/* XenArcAI dynamic branding with lightning effects */}
+          {/* Enhanced XenArcAI dynamic branding with lightning effects */}
           <div className="mt-8 mb-2 relative">
             <div className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-primary/80 to-purple-400 bg-clip-text text-transparent animate-pulse-slow">
               XenArcAI
@@ -79,9 +85,15 @@ const Footer = () => {
             <div className="absolute -bottom-2 -left-4">
               <Zap className="h-4 w-4 text-primary animate-glow" style={{animationDelay: "0.5s"}} />
             </div>
+            <div className="absolute top-2 right-1/3">
+              <Zap className="h-5 w-5 text-primary animate-glow" style={{animationDelay: "0.8s"}} />
+            </div>
+            <div className="absolute -top-2 left-1/3">
+              <Zap className="h-5 w-5 text-primary animate-glow" style={{animationDelay: "1.2s"}} />
+            </div>
           </div>
           
-          {/* Glowing underline effect */}
+          {/* Enhanced glowing underline effect */}
           <div className="w-40 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-pulse-slow"></div>
         </div>
       </div>

@@ -53,11 +53,13 @@ const Hero = () => {
             XenArcAI
           </div>
           
-          {/* Lightning and particle effects */}
+          {/* Enhanced lightning and particle effects */}
           <div className="absolute inset-0 pointer-events-none">
             <Zap className="absolute top-0 left-1/4 h-8 w-8 text-primary animate-glow" style={{animationDelay: "0.3s"}} />
-            <Zap className="absolute top-1/3 right-1/4 h-6 w-6 text-primary animate-glow" style={{animationDelay: "1.2s"}} />
-            <Zap className="absolute bottom-1/4 left-1/3 h-7 w-7 text-primary animate-glow" style={{animationDelay: "0.7s"}} />
+            <Zap className="absolute top-1/3 right-1/4 h-10 w-10 text-primary animate-glow" style={{animationDelay: "1.2s"}} />
+            <Zap className="absolute bottom-1/4 left-1/3 h-9 w-9 text-primary animate-glow" style={{animationDelay: "0.7s"}} />
+            <Zap className="absolute bottom-1/3 right-1/3 h-7 w-7 text-primary animate-glow" style={{animationDelay: "1.5s"}} />
+            <Zap className="absolute top-1/4 right-1/5 h-6 w-6 text-primary animate-glow" style={{animationDelay: "0.9s"}} />
             
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
               <div className="absolute w-2 h-2 bg-primary rounded-full animate-float" style={{ top: '10%', left: '20%', animationDelay: '0.5s' }}></div>
@@ -79,7 +81,7 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Global lighting effect */}
+      {/* Enhanced global lighting effect */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-primary/10 to-transparent"></div>
       </div>
