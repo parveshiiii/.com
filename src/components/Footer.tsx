@@ -1,5 +1,5 @@
 
-import { Github, Linkedin, Twitter, Mail, Phone } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, Phone, Globe, Zap } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -61,6 +61,13 @@ const Footer = () => {
             <p className="mt-2 text-sm">
               Contact: <a href="mailto:pr086832@gmail.com" className="text-primary hover:underline">pr086832@gmail.com</a> | <a href="tel:+918950466775" className="text-primary hover:underline">+91 8950466775</a>
             </p>
+          </div>
+          
+          {/* Grok-style branding */}
+          <div className="mt-6 flex items-center gap-2 text-primary">
+            <Globe className="h-5 w-5 text-primary" />
+            <span className="font-bold">XenArcAI</span>
+            <Zap className="h-5 w-5 text-primary animate-glow" />
           </div>
         </div>
       </div>

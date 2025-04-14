@@ -1,16 +1,16 @@
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Globe, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center pt-16 section-padding">
-      <div className="container mx-auto px-4">
+    <section id="home" className="min-h-screen flex flex-col items-center justify-between pt-16 section-padding relative">
+      <div className="container mx-auto px-4 flex-grow flex items-center">
         <div className="max-w-3xl animate-in">
           <div className="flex items-center gap-4 mb-6">
             <Avatar className="h-24 w-24 border-2 border-primary animate-in animate-float animate-glow">
-              <AvatarImage src="https://avatars.githubusercontent.com/u/parveshiiii" alt="Parvesh Rawal" />
+              <AvatarImage src="/lovable-uploads/0d3d46aa-bc6c-4610-a290-06aa1e6a8174.png" alt="Parvesh Rawal" />
               <AvatarFallback>PR</AvatarFallback>
             </Avatar>
             <div className="animate-in animate-delayed">
@@ -40,6 +40,31 @@ const Hero = () => {
             </Button>
           </div>
         </div>
+      </div>
+      
+      {/* Earth Logo with Branding */}
+      <div className="w-full relative mt-12 mb-4">
+        <div className="flex justify-center items-center mb-2">
+          <img 
+            src="/lovable-uploads/55ffd771-7cdb-4ab6-bc2e-cd3a05cd67a5.png" 
+            alt="XenArcAI Earth" 
+            className="w-full max-w-3xl mx-auto"
+          />
+        </div>
+        
+        {/* Grok-style branding at the bottom */}
+        <div className="absolute bottom-0 right-5 md:right-12 flex items-center gap-2 text-primary animate-pulse-slow">
+          <span className="font-medium">Powered by</span>
+          <div className="flex items-center">
+            <span className="font-bold">XenArcAI</span>
+            <Zap className="h-5 w-5 ml-1 text-primary animate-glow" />
+          </div>
+        </div>
+      </div>
+      
+      {/* Global lighting effect */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-primary/10 to-transparent"></div>
       </div>
     </section>
   );
