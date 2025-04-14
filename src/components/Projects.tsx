@@ -1,4 +1,3 @@
-
 import { ExternalLink, Github } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -98,14 +97,11 @@ const Projects = () => {
             I founded XenArcAI to revolutionize how machines understand human emotions. 
             Join me on this journey to create more empathetic AI.
           </p>
-          <Button size="lg" className="group" asChild>
-            <a 
-              href="#join-us" 
-              className="scroll-smooth"
-            >
+          <a href="#join-us" className="scroll-smooth">
+            <Button size="lg" className="group">
               Join Us <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </Button>
+            </Button>
+          </a>
         </div>
       </div>
     </section>

@@ -29,14 +29,14 @@ const Hero = () => {
             human-centered AI at XenArcAI.
           </p>
           <div className="flex flex-wrap gap-4 animate-in" style={{animationDelay: "250ms"}}>
-            <Button size="lg" className="group animate-pulse-slow" asChild>
-              <a href="#projects">
+            <Button size="lg" className="group animate-pulse-slow">
+              <a href="#projects" className="flex items-center">
                 Explore My Work 
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="hover:border-primary" asChild>
-              <a href="#join-us">Join XenArcAI</a>
+            <Button size="lg" variant="outline" className="hover:border-primary">
+              <a href="#join-us" className="flex items-center">Join XenArcAI</a>
             </Button>
           </div>
         </div>
