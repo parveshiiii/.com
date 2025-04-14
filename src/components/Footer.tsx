@@ -33,7 +33,12 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-muted/30 py-12">
+    <footer className="bg-muted/30 py-12 relative">
+      {/* Lightning effect at top of footer */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <Zap className="h-10 w-10 text-primary animate-glow" />
+      </div>
+      
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center animate-in">
           <div className="flex space-x-4 mb-6">
@@ -63,13 +68,16 @@ const Footer = () => {
             </p>
           </div>
           
-          {/* XenArcAI dynamic branding */}
+          {/* XenArcAI dynamic branding with lightning effects */}
           <div className="mt-8 mb-2 relative">
             <div className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-primary/80 to-purple-400 bg-clip-text text-transparent animate-pulse-slow">
               XenArcAI
             </div>
             <div className="absolute -top-4 -right-4">
               <Zap className="h-6 w-6 text-primary animate-glow" />
+            </div>
+            <div className="absolute -bottom-2 -left-4">
+              <Zap className="h-4 w-4 text-primary animate-glow" style={{animationDelay: "0.5s"}} />
             </div>
           </div>
           

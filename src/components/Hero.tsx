@@ -6,6 +6,10 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-between pt-16 section-padding relative">
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
+        <Zap className="h-12 w-12 text-primary animate-pulse-slow" />
+      </div>
+      
       <div className="container mx-auto px-4 flex-grow flex items-center">
         <div className="max-w-3xl animate-in">
           <div className="flex items-center gap-4 mb-6">
@@ -49,8 +53,12 @@ const Hero = () => {
             XenArcAI
           </div>
           
-          {/* Particle effects */}
+          {/* Lightning and particle effects */}
           <div className="absolute inset-0 pointer-events-none">
+            <Zap className="absolute top-0 left-1/4 h-8 w-8 text-primary animate-glow" style={{animationDelay: "0.3s"}} />
+            <Zap className="absolute top-1/3 right-1/4 h-6 w-6 text-primary animate-glow" style={{animationDelay: "1.2s"}} />
+            <Zap className="absolute bottom-1/4 left-1/3 h-7 w-7 text-primary animate-glow" style={{animationDelay: "0.7s"}} />
+            
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
               <div className="absolute w-2 h-2 bg-primary rounded-full animate-float" style={{ top: '10%', left: '20%', animationDelay: '0.5s' }}></div>
               <div className="absolute w-2 h-2 bg-primary rounded-full animate-float" style={{ top: '30%', left: '80%', animationDelay: '1.2s' }}></div>

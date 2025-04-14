@@ -61,7 +61,7 @@ const Header = () => {
               {item.label}
             </a>
           ))}
-          <a href="mailto:pr086832@gmail.com">
+          <a href="#contact">
             <Button className="group flex items-center gap-2">
               <Users className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Contact Me
             </Button>
@@ -85,7 +85,7 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <a href="mailto:pr086832@gmail.com" className="w-full">
+              <a href="#contact" className="w-full">
                 <Button className="w-full flex items-center justify-center gap-2 group">
                   <Users className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Contact Me
                 </Button>
