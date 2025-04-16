@@ -33,8 +33,8 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="#home" className="text-xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent flex items-center gap-2 animate-in">
-          <Zap className="h-6 w-6 text-primary animate-pulse-slow" /> Parvesh Rawal
+        <a href="#home" className="text-xl font-bold bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-300 bg-clip-text text-transparent flex items-center gap-2 animate-in">
+          <Zap className="h-6 w-6 text-yellow-400 animate-pulse-slow" /> Parvesh Rawal
         </a>
         
         {/* Mobile Menu Button */}
@@ -53,8 +53,8 @@ const Header = () => {
             <a 
               key={item.label} 
               href={item.href}
-              className={`font-medium hover:text-primary transition-colors ${
-                item.label === 'Join Us' ? 'text-primary' : 'text-muted-foreground'
+              className={`font-medium hover:text-yellow-400 transition-colors ${
+                item.label === 'Join Us' ? 'text-yellow-400' : 'text-muted-foreground'
               }`}
               style={{ animationDelay: `${i * 50}ms` }}
             >
@@ -62,7 +62,7 @@ const Header = () => {
             </a>
           ))}
           <a href="#contact">
-            <Button className="group flex items-center gap-2">
+            <Button className="group bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 flex items-center gap-2">
               <Users className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Contact Me
             </Button>
           </a>
@@ -77,16 +77,16 @@ const Header = () => {
                   key={item.label} 
                   href={item.href}
                   className={`font-medium transition-colors ${
-                    item.label === 'Join Us' ? 'text-primary' : 'text-muted-foreground'
-                  } hover:text-primary`}
+                    item.label === 'Join Us' ? 'text-yellow-400' : 'text-muted-foreground'
+                  } hover:text-yellow-400`}
                   onClick={() => setMenuOpen(false)}
                   style={{ animationDelay: `${i * 50}ms` }}
                 >
                   {item.label}
                 </a>
               ))}
-              <a href="#contact" className="w-full">
-                <Button className="w-full flex items-center justify-center gap-2 group">
+              <a href="#contact" className="w-full" onClick={() => setMenuOpen(false)}>
+                <Button className="w-full bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 flex items-center justify-center gap-2 group">
                   <Users className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Contact Me
                 </Button>
               </a>

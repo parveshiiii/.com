@@ -39,7 +39,7 @@ const Projects = () => {
   return (
     <section id="projects" className="section-padding bg-muted/30">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-2 animate-in">Featured Projects</h2>
+        <h2 className="text-3xl font-bold mb-2 animate-in bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">Featured Projects</h2>
         <p className="text-muted-foreground mb-12 max-w-2xl animate-in" style={{animationDelay: "50ms"}}>
           A showcase of my innovations in AI and machine learning. Each project represents a milestone in advancing 
           emotional intelligence and human-centered computing.
@@ -66,7 +66,7 @@ const Projects = () => {
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary">{tech}</Badge>
+                    <Badge key={tech} variant="secondary" className="bg-yellow-100 text-yellow-800">{tech}</Badge>
                   ))}
                 </div>
               </CardContent>
@@ -75,7 +75,7 @@ const Projects = () => {
                   href={project.github} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-sm font-medium text-primary hover:underline group"
+                  className="flex items-center text-sm font-medium text-yellow-600 hover:underline group"
                 >
                   <Github className="mr-1 h-4 w-4 transition-transform group-hover:-translate-y-1" /> Repository
                 </a>
@@ -83,7 +83,7 @@ const Projects = () => {
                   href={project.link} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-sm font-medium text-primary hover:underline group"
+                  className="flex items-center text-sm font-medium text-yellow-600 hover:underline group"
                 >
                   View Project <ExternalLink className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
@@ -93,13 +93,13 @@ const Projects = () => {
         </div>
         
         <div className="mt-12 text-center animate-in" style={{animationDelay: "400ms"}}>
-          <h3 className="text-xl font-bold mb-4">Innovating at XenArcAI</h3>
+          <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">Innovating at XenArcAI</h3>
           <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
             I founded XenArcAI to revolutionize how machines understand human emotions. 
             Join me on this journey to create more empathetic AI.
           </p>
           <a href="#join-us" className="scroll-smooth">
-            <Button size="lg" className="group">
+            <Button size="lg" className="group bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600">
               Join Us <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </a>
