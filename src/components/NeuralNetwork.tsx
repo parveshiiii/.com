@@ -47,7 +47,7 @@ function ConnectionLines({ points }: { points: [number, number, number][] }) {
         const end = points[connection[1]];
         
         return (
-          <Line 
+          <LineSegment 
             key={idx}
             start={start}
             end={end}
@@ -58,8 +58,8 @@ function ConnectionLines({ points }: { points: [number, number, number][] }) {
   );
 }
 
-function Line({ start, end }: { start: [number, number, number], end: [number, number, number] }) {
-  const ref = useRef<THREE.Line>(null);
+function LineSegment({ start, end }: { start: [number, number, number], end: [number, number, number] }) {
+  const ref = useRef<THREE.LineSegments>(null);
   
   const geometry = useMemo(() => {
     const lineGeometry = new THREE.BufferGeometry();
@@ -72,22 +72,23 @@ function Line({ start, end }: { start: [number, number, number], end: [number, n
 
   // Subtle animation
   useFrame(() => {
-    if (ref.current) {
-      ref.current.material.opacity = 0.1 + 0.2 * Math.sin(Date.now() * 0.001);
+    if (ref.current && ref.current.material) {
+      // Type assertion to access opacity property safely
+      const material = ref.current.material as THREE.Material & { opacity: number };
+      material.opacity = 0.1 + 0.2 * Math.sin(Date.now() * 0.001);
     }
   });
 
   return (
-    <line ref={ref}>
+    <lineSegments ref={ref}>
       <bufferGeometry attach="geometry" {...geometry} />
       <lineBasicMaterial
         attach="material"
         color="#ffd700"
         transparent
         opacity={0.3}
-        linewidth={1}
       />
-    </line>
+    </lineSegments>
   );
 }
 
