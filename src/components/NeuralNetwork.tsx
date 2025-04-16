@@ -23,25 +23,71 @@ function Node({ position }: { position: [number, number, number] }) {
   );
 }
 
-function Lines({ points }: { points: [number, number, number][] }) {
-  const lineGeometry = useMemo(() => {
-    const geometry = new THREE.BufferGeometry();
-    
-    const vertices: number[] = points.reduce((acc: number[], point, i) => {
-      if (i === points.length - 1) return acc;
-      const next = points[i + 1];
-      return [...acc, ...point, ...next];
-    }, []);
-    
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-    return geometry;
+function ConnectionLines({ points }: { points: [number, number, number][] }) {
+  const connections: [number, number][] = useMemo(() => {
+    const result: [number, number][] = [];
+    // Create random connections between nodes
+    for (let i = 0; i < points.length; i++) {
+      // Connect each node to 2-3 random other nodes
+      const numConnections = 2 + Math.floor(Math.random() * 2);
+      for (let j = 0; j < numConnections; j++) {
+        const target = Math.floor(Math.random() * points.length);
+        if (target !== i) {
+          result.push([i, target]);
+        }
+      }
+    }
+    return result;
   }, [points]);
 
   return (
-    <lineSegments>
-      <bufferGeometry attach="geometry" {...lineGeometry} />
-      <lineBasicMaterial attach="material" color="#ffd700" opacity={0.3} transparent />
-    </lineSegments>
+    <group>
+      {connections.map((connection, idx) => {
+        const start = points[connection[0]];
+        const end = points[connection[1]];
+        
+        return (
+          <Line 
+            key={idx}
+            start={start}
+            end={end}
+          />
+        );
+      })}
+    </group>
+  );
+}
+
+function Line({ start, end }: { start: [number, number, number], end: [number, number, number] }) {
+  const ref = useRef<THREE.Line>(null);
+  
+  const geometry = useMemo(() => {
+    const lineGeometry = new THREE.BufferGeometry();
+    lineGeometry.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute([...start, ...end], 3)
+    );
+    return lineGeometry;
+  }, [start, end]);
+
+  // Subtle animation
+  useFrame(() => {
+    if (ref.current) {
+      ref.current.material.opacity = 0.1 + 0.2 * Math.sin(Date.now() * 0.001);
+    }
+  });
+
+  return (
+    <line ref={ref}>
+      <bufferGeometry attach="geometry" {...geometry} />
+      <lineBasicMaterial
+        attach="material"
+        color="#ffd700"
+        transparent
+        opacity={0.3}
+        linewidth={1}
+      />
+    </line>
   );
 }
 
@@ -65,7 +111,7 @@ function NeuralNetworkScene() {
       {points.map((position, idx) => (
         <Node key={idx} position={position} />
       ))}
-      <Lines points={points} />
+      <ConnectionLines points={points} />
       <OrbitControls enableZoom={false} enablePan={false} />
     </>
   );
@@ -74,7 +120,10 @@ function NeuralNetworkScene() {
 export default function NeuralNetwork() {
   return (
     <div className="fixed inset-0 -z-10 opacity-60">
-      <Canvas camera={{ position: [0, 0, 15], fov: 75 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 15], fov: 75 }}
+        dpr={[1, 2]} // Performance optimization
+      >
         <NeuralNetworkScene />
       </Canvas>
     </div>
