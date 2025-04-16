@@ -4,6 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Hero = () => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
+    const element = document.querySelector(target);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-between pt-16 section-padding relative">
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
@@ -34,13 +42,13 @@ const Hero = () => {
           </p>
           <div className="flex flex-wrap gap-4 animate-in" style={{animationDelay: "250ms"}}>
             <Button size="lg" className="group bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 animate-pulse-slow">
-              <a href="#projects" className="flex items-center">
+              <a href="#projects" className="flex items-center" onClick={(e) => handleSmoothScroll(e, "#projects")}>
                 Explore My Work 
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
             <Button size="lg" variant="outline" className="hover:border-yellow-400">
-              <a href="#join-us" className="flex items-center">Join XenArcAI</a>
+              <a href="#join-us" className="flex items-center" onClick={(e) => handleSmoothScroll(e, "#join-us")}>Join XenArcAI</a>
             </Button>
           </div>
         </div>

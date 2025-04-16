@@ -64,7 +64,7 @@ const Footer = () => {
           
           <div className="text-center text-muted-foreground">
             <p className="mb-2">
-              Founder & CEO of <a href="https://xenarcai.onrender.com/" className="text-yellow-500 hover:underline">XenArcAI</a> | AI & ML Visionary 
+              Founder & CEO of <a href="https://xenarcai.onrender.com/" target="_blank" rel="noopener noreferrer" className="text-yellow-500 hover:underline">XenArcAI</a> | AI & ML Visionary 
             </p>
             <p>
               &copy; {currentYear} Parvesh Rawal. All rights reserved.

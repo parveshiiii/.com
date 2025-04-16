@@ -57,11 +57,30 @@ const Header = () => {
                 item.label === 'Join Us' ? 'text-yellow-400' : 'text-muted-foreground'
               }`}
               style={{ animationDelay: `${i * 50}ms` }}
+              onClick={(e) => {
+                // Prevent default only if it's a hash link to allow smooth scrolling
+                if (item.href.startsWith('#')) {
+                  e.preventDefault();
+                  const element = document.querySelector(item.href);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+              }}
             >
               {item.label}
             </a>
           ))}
-          <a href="#contact">
+          <a 
+            href="#contact" 
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.querySelector('#contact');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             <Button className="group bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 flex items-center gap-2">
               <Users className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Contact Me
             </Button>
@@ -79,13 +98,34 @@ const Header = () => {
                   className={`font-medium transition-colors ${
                     item.label === 'Join Us' ? 'text-yellow-400' : 'text-muted-foreground'
                   } hover:text-yellow-400`}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    setMenuOpen(false);
+                    // Prevent default only if it's a hash link to allow smooth scrolling
+                    if (item.href.startsWith('#')) {
+                      e.preventDefault();
+                      const element = document.querySelector(item.href);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }
+                  }}
                   style={{ animationDelay: `${i * 50}ms` }}
                 >
                   {item.label}
                 </a>
               ))}
-              <a href="#contact" className="w-full" onClick={() => setMenuOpen(false)}>
+              <a 
+                href="#contact" 
+                className="w-full" 
+                onClick={(e) => {
+                  setMenuOpen(false);
+                  e.preventDefault();
+                  const element = document.querySelector('#contact');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
                 <Button className="w-full bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 flex items-center justify-center gap-2 group">
                   <Users className="h-4 w-4 transition-transform group-hover:-translate-y-1" /> Contact Me
                 </Button>

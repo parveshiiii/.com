@@ -36,6 +36,14 @@ const Projects = () => {
     },
   ];
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
+    const element = document.querySelector(target);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="projects" className="section-padding bg-muted/30">
       <div className="container mx-auto px-4">
@@ -98,7 +106,7 @@ const Projects = () => {
             I founded XenArcAI to revolutionize how machines understand human emotions. 
             Join me on this journey to create more empathetic AI.
           </p>
-          <a href="#join-us" className="scroll-smooth">
+          <a href="#join-us" className="scroll-smooth" onClick={(e) => handleSmoothScroll(e, "#join-us")}>
             <Button size="lg" className="group bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600">
               Join Us <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
