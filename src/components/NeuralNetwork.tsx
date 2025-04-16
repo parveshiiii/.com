@@ -18,41 +18,42 @@ function Node({ position }: { position: [number, number, number] }) {
   return (
     <mesh ref={meshRef} position={position}>
       <sphereGeometry args={[0.1, 16, 16]} />
-      <meshStandardMaterial color="#ffd700" />
+      <meshStandardMaterial color={"#ffd700"} />
     </mesh>
   );
 }
 
-function Lines({ points }: { points: number[][] }) {
+function Lines({ points }: { points: [number, number, number][] }) {
   const lineGeometry = useMemo(() => {
     const geometry = new THREE.BufferGeometry();
     
-    const vertices = points.reduce((acc, point, i) => {
+    const vertices: number[] = points.reduce((acc: number[], point, i) => {
       if (i === points.length - 1) return acc;
       const next = points[i + 1];
       return [...acc, ...point, ...next];
-    }, [] as number[]);
+    }, []);
     
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
     return geometry;
   }, [points]);
 
   return (
-    <line geometry={lineGeometry}>
-      <lineBasicMaterial color="#ffd700" opacity={0.3} transparent />
-    </line>
+    <lineSegments>
+      <bufferGeometry attach="geometry" {...lineGeometry} />
+      <lineBasicMaterial attach="material" color="#ffd700" opacity={0.3} transparent />
+    </lineSegments>
   );
 }
 
 function NeuralNetworkScene() {
   const points = useMemo(() => {
-    const pts = [];
+    const pts: [number, number, number][] = [];
     for (let i = 0; i < 50; i++) {
       pts.push([
         (Math.random() - 0.5) * 10,
         (Math.random() - 0.5) * 10,
         (Math.random() - 0.5) * 10
-      ]);
+      ] as [number, number, number]);
     }
     return pts;
   }, []);
@@ -62,7 +63,7 @@ function NeuralNetworkScene() {
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
       {points.map((position, idx) => (
-        <Node key={idx} position={position as [number, number, number]} />
+        <Node key={idx} position={position} />
       ))}
       <Lines points={points} />
       <OrbitControls enableZoom={false} enablePan={false} />
